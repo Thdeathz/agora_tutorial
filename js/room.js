@@ -1,15 +1,15 @@
 let messagesContainer = document.getElementById('messages')
 messagesContainer.scrollTop = messagesContainer.scrollHeight
-
+console.log('===> render')
 const memberContainer = document.getElementById('members__container')
-const memberButton = document.getElementById('members__button')
+const nav = document.getElementById('nav')
 
 const chatContainer = document.getElementById('messages__container')
 const chatButton = document.getElementById('chat__button')
 
 let activeMemberContainer = false
 
-memberButton.addEventListener('click', () => {
+nav.addEventListener('click', () => {
   if (activeMemberContainer) {
     memberContainer.style.display = 'none'
   } else {

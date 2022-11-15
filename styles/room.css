@@ -1,6 +1,6 @@
 .container {
-  margin-top: 74px;
-  height: clac(100vh - 74px);
+  margin-top: 57px;
+  height: clac(100vh - 57px);
   width: 100%;
   position: relative;
 }
@@ -68,7 +68,7 @@
   background-color: #2aca3e;
 }
 
-.member_name{
+.member_name {
   font-size: 14px;
   line-height: 0;
 }
@@ -108,12 +108,16 @@
   max-width: 900px;
 }
 
+.my__message {
+  justify-content: flex-end;
+}
+
 .message__body strong {
   font-weight: 600;
   color: #ede0e0;
 }
 
-.message__body__bot{
+.message__body__bot {
   padding: 0 20px;
   max-width: 900px;
   color: #bdbdbd;
@@ -122,13 +126,13 @@
 
 .message__author {
   margin-right: 10px;
-  color: #2aca3e!important;
+  color: #2aca3e !important;
 
 }
 
 .message__author__bot {
   margin-right: 10px;
-  color: #a52aca!important;
+  color: #a52aca !important;
 
 }
 
@@ -214,10 +218,10 @@
   height: 300px;
   width: 300px;
 
-  background-image: url('/images/logo.png');
+  background-image: url('/images/avatar-svgrepo-com.svg');
   background-repeat: no-repeat;
+  background-size: cover;
   background-position: center;
-  background-size: 75px;
 }
 
 .video-player {
@@ -257,6 +261,7 @@
     width: calc(100% - 20rem);
     left: 0;
   }
+
   #messages__container {
     max-width: 20rem;
   }

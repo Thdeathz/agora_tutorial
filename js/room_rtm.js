@@ -2,6 +2,7 @@ let handleMemberJoined = async MemberId => {
   console.log('===> memberId: ', MemberId)
 
   addMemberToDom(MemberId)
+  
   let members = await channel.getMembers()
   updateMemberTotal(members)
 
@@ -18,6 +19,7 @@ let addMemberToDom = async MemberId => {
                       <p class="member_name">${name}</p>
                     </div>`
   memberWrapper.insertAdjacentHTML('beforeend', memberItem)
+  
 }
 
 let updateMemberTotal = async members => {
@@ -52,9 +54,8 @@ let getMembers = async () => {
 
 let handleChannelMessage = async (messageData, MemberId) => {
   let data = JSON.parse(messageData.text)
-  console.log('=====> message', data)
   if (data.type === 'chat') {
-    addMessageToDom(data.displayName, data.message)
+    addMessageToDom(data.displayName, data.message, false)
   }
 
   if (data.type === 'user_left') {
@@ -84,11 +85,11 @@ let sendMessage = async e => {
       displayName: displayName
     })
   })
-  addMessageToDom(displayName, message)
+  addMessageToDom(displayName, message, true)
   e.target.reset()
 }
 
-let addMessageToDom = (name, message) => {
+let addMessageToDom = (name, message, me) => {
   let messagesWrapper = document.getElementById('messages')
 
   let newMessage = `<div class="message__wrapper">
@@ -97,7 +98,14 @@ let addMessageToDom = (name, message) => {
                           <p class="message__text">${message}</p>
                       </div>
                     </div>`
-
+  if(me) {
+    newMessage = `<div class="message__wrapper my__message">
+                      <div class="message__body">
+                          <strong class="message__author">${name}</strong>
+                          <p class="message__text">${message}</p>
+                      </div>
+                    </div>`
+  }
   messagesWrapper.insertAdjacentHTML('beforeend', newMessage)
 
   let lastMessage = document.querySelector('#messages .message__wrapper:last-child')
@@ -111,7 +119,7 @@ let addBotMessageToDom = botMessage => {
 
   let newMessage = `<div class="message__wrapper">
                       <div class="message__body__bot">
-                          <strong class="message__author__bot">🤖 Mumble Bot</strong>
+                          <strong class="message__author__bot">🤖 Welcome Bot</strong>
                           <p class="message__text__bot">${botMessage}</p>
                       </div>
                     </div>`

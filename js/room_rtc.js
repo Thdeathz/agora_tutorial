@@ -32,6 +32,7 @@ let localScreenTracks
 let sharingScreen = false
 
 let joinRoomInit = async () => {
+  document.getElementById("logo").insertAdjacentHTML('beforeend', `<span>Room ${roomId}</span>`)
   rtmClient = await AgoraRTM.createInstance(APP_ID)
   await rtmClient.login({ uid, token })
 
